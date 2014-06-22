@@ -98,6 +98,15 @@ Simple **试图**规范流程，而不是提供一个非常具体的实现。
 
 2. Web，Web网站类型应用。系统采用的模板引擎是[twig](http://twig.sensiolabs.org/ "twig模板引擎主页")
 
+##联系方式与bug提交##
+1. dongyuhappy@gmail.com
+2. qq群,191564289
+
+欢迎大家与我讨论相关问题 :)
+
+
+
+
 
 
 

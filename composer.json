@@ -1,0 +1,13 @@
+{
+    "require": {
+        "php": ">=5.3.3",
+        "monolog/monolog": "1.10.*@dev",
+        "twig/twig": "1.*"
+    },
+    "config":{
+        "vendor-dir" : "src/Simple/vendor"
+    },
+    "autoload": {
+        "psr-0": {"Simple\\": "./src"}
+    }
+}

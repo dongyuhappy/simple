@@ -1,4 +1,15 @@
 {
+    "name":"simple/simple",
+    "description":"是一个结构清晰、层次分明、微型的php框架",
+    "keywords": ["game framework", "php framework", "psr-0"],
+     "license": "Apache",
+    "authors": [
+        {
+            "name": "dongyu",
+            "email": "dongyuhappy@gmail.com",
+            "homepage": "https://github.com/dongyuhappy/simple"
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
         "monolog/monolog": "1.10.*@dev",

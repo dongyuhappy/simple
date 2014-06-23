@@ -52,10 +52,42 @@ class Bootstrap
         //注册自动加载类方法
         spl_autoload_register('Simple\Bootstrap\Bootstrap::autoload');
 
+        self::sysConst(); //定义系统常量
+        self::checkRun(); //检查运行环境
 
         //加载第三方库
         require_once SIMPLE_LIB_PATH . 'Simple' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
+
+    }
+
+
+    /**
+     * 检查运行环境
+     * @throws Exception\BootstrapException
+     */
+    private static function checkRun()
+    {
+        if (defined('APP_PATH') == false)
+            throw new BootstrapException('APP_PATH is not defined');
+        if (defined('SIMPLE_LIB_PATH') == false)
+            throw new BootstrapException('SIMPLE_LIB_PATH is not defined');
+
+
+        if(version_compare(PHP_VERSION,'5.3.0','<'))
+            throw new BootstrapException('PHP版本太低， PHP > 5.3.0 !');
+    }
+
+
+    /**
+     *
+     * 定义系统常量
+     */
+    private static function sysConst()
+    {
+
+        //版本定义
+        define('VERSION', '0.1-alpha');
 
     }
 
@@ -67,17 +99,7 @@ class Bootstrap
      */
     public static function start(Application $app)
     {
-        if (defined('APP_PATH') == false)
-            throw new BootstrapException('APP_PATH is not defined');
-        if (defined('SIMPLE_LIB_PATH') == false)
-            throw new BootstrapException('SIMPLE_LIB_PATH is not defined');
 
-
-        if(version_compare(PHP_VERSION,'5.3.0','<'))
-            throw new BootstrapException('PHP版本太低， PHP > 5.3.0 !');
-
-        //版本定义
-        define('VERSION', '0.1-alpha');
 
         self::$_app = $app;
 

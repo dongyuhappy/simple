@@ -26,7 +26,7 @@ class PDODao implements Dao
      * 数据库操作对象
      * @var \Simple\Model\Driver\MySQLPDO
      */
-    private $_link;
+    protected $_link;
 
 
     /**

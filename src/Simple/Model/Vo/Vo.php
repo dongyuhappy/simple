@@ -139,7 +139,7 @@ class Vo
     /**
      * 把对象格式化为数组
      * @param array $filter 要过滤掉的字段
-     * @param $case 对字段进行 大写(1) 小写(-1) 保持原样(0)处理
+     * @param int $case 对字段进行 大写(1) 小写(-1) 保持原样(0)处理
      * @return array
      */
     public function toArray($filter = array(), $case = -1)
@@ -157,7 +157,7 @@ class Vo
             $f = substr($f, 1);
 
             //去掉要过滤的字段
-            $methondName = "get" . ucfirst($f);
+            $methodName = "get" . ucfirst($f);
             if ($case == -1) {
                 $f = strtolower($f);
             }
@@ -165,7 +165,7 @@ class Vo
                 continue;
 
 
-            $v = call_user_func_array(array(&$this, $methondName), array());
+            $v = call_user_func_array(array(&$this, $methodName), array());
             $data[$f] = $v;
         }
         return $data;

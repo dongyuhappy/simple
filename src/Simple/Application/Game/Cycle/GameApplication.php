@@ -38,7 +38,7 @@ abstract class GameApplication extends Application
     {
         $params = array_merge($_GET, $_POST);
 
-        $this->request = new GameRequest(array($router->getModule(), $router->getAction()), $params);
+        $this->request = new GameRequest($params);
         return $this->request;
     }
 

@@ -8,10 +8,11 @@
 namespace Simple\Cycle;
 
 
-
 use Simple\Application\Game\Cycle\Exception\GameCycleException;
+use Simple\Config\ConfigManager;
 
-class Caller {
+class Caller
+{
 
     /**
      * 调用具体的业务逻辑接口，通常来说是项目中的
@@ -20,13 +21,37 @@ class Caller {
      * @return mixed
      * @throws \Simple\Application\Game\Cycle\Exception\GameCycleException
      */
-    public  function toCall(Request $request){
+    public function toCall(Request $request)
+    {
         $head = $request->getHeader();
-        $module = ucfirst($head[0]);
-        $action = $head[1];
 
-        // TODO 获取类的命名空间
-        $cls = new \ReflectionClass(APP_TOP_NAMESPACE . '\\Controller\\' . $module . 'Controller');
+        //组
+        $group = $head[0];
+
+        if ($group) {
+            $group = ucfirst($group);
+        }
+        //模块
+        $module = ucfirst($head[1]);
+        //操作
+        $action = $head[2];
+
+
+        //项目module的命名空间名称
+        $moduleNameSpace = ConfigManager::get('module_namespace');
+        ////模块名称的后缀
+        $moduleSuffix = ConfigManager::get('module_suffix');
+
+
+        if ($group) {
+            $clsName = APP_TOP_NAMESPACE . '\\' . $moduleNameSpace . '\\' . $group . '\\' . $module . $moduleSuffix;
+        } else {
+            $clsName = APP_TOP_NAMESPACE . '\\' . $moduleNameSpace . '\\' . $module . $moduleSuffix;
+        }
+
+        //  获取类的命名空间
+        $cls = new \ReflectionClass($clsName);
+
         $instance = null;
 
         //优先调用init方法

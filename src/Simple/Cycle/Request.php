@@ -7,6 +7,8 @@
 
 namespace Simple\Cycle;
 
+use Simple\Bootstrap\Bootstrap;
+
 
 /**
  * 请求对象
@@ -18,21 +20,14 @@ abstract class Request
 
 
     /**
-     * @param array $header 请求的头信息
      * @param array $body 请求参数数据信息
      */
-    public function __construct($header, $body)
+    public function __construct($body)
     {
-        $this->header = $header;
         $this->body = $body;
         $this->auth();
     }
 
-    /**
-     * 客户端的请求头信息
-     * @var array
-     */
-    private $header = array();
 
     /**
      * 请求数据
@@ -63,8 +58,6 @@ abstract class Request
     }
 
 
-
-
     /**
      * 获取body里面某个字段的值
      * @param $key
@@ -86,20 +79,13 @@ abstract class Request
         return $this->body;
     }
 
-    /**
-     * @param array $header
-     */
-    public function setHeader($header)
-    {
-        $this->header = $header;
-    }
 
     /**
      * @return array
      */
     public function getHeader()
     {
-        return $this->header;
+        return Bootstrap::getHeader();
     }
 
 

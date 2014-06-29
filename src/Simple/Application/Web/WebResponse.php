@@ -32,12 +32,18 @@ class WebResponse extends Response
         $header = $this->getHeader();
 
         //创建loader对象
-        $tpl = ConfigManager::get('tpl') . $header[0] . DIRECTORY_SEPARATOR;
-        $loader = new \Twig_Loader_Filesystem($tpl);
+        $tplPath = ConfigManager::get('tpl') . DIRECTORY_SEPARATOR;
 
+        //group不存在就直接去掉
+        if (empty($header[0])) {
+            array_shift($header);
+        }
+
+        $tplFileName = array_pop($header); //模板文件的名称
+        $loader = new \Twig_Loader_Filesystem($tplPath . implode(DIRECTORY_SEPARATOR, $header));
         $env = $this->makeEnvironment($loader);
         $suffix = ConfigManager::get('tpl_suffix');
-        $env->display($header[1] . $suffix, $this->getBody());
+        $env->display($tplFileName . $suffix, $this->getBody());
     }
 
 

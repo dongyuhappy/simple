@@ -10,11 +10,11 @@
  *
  */
 return array(
-    'tpl' => dirname(APP_PATH) . 'tpl' . DIRECTORY_SEPARATOR, //模板目录
-    'tpl_suffix' => '.html',//模板文件的后缀
-    'css' => 'public/css',//css文件夹
-    'js' =>'public/js',//js
-    'image' =>'public/image',//图片
+    'tpl' => dirname(APP_PATH) . DIRECTORY_SEPARATOR . 'tpl' . DIRECTORY_SEPARATOR, //模板目录
+    'tpl_suffix' => '.html', //模板文件的后缀
+    'css' => 'public/css', //css文件夹
+    'js' => 'public/js', //js
+    'image' => 'public/image', //图片
 
 
 );

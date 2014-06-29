@@ -8,6 +8,8 @@
 namespace Simple\Cycle;
 
 
+use Simple\Bootstrap\Bootstrap;
+
 abstract class Response
 {
     /**
@@ -15,25 +17,11 @@ abstract class Response
      */
     protected $status = 0;
 
-    /**
-     * @var array 返回给客户端的header信息
-     */
-    protected $header = array();
-
 
     /**
      * @var array 返回给客户端的数据
      */
     protected $body = array();
-
-
-    /**
-     * @param array $header
-     */
-    public function __construct($header)
-    {
-        $this->setHeader($header);
-    }
 
 
     /**
@@ -58,20 +46,14 @@ abstract class Response
         return $this->body[$key];
     }
 
-    /**
-     * @param array $header
-     */
-    public function setHeader($header)
-    {
-        $this->header = $header;
-    }
 
     /**
      * @return array
      */
     public function getHeader()
     {
-        return $this->header;
+        return Bootstrap::getHeader();
+
     }
 
     /**

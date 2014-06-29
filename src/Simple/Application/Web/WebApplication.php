@@ -8,7 +8,6 @@
 namespace Simple\Application\Web;
 
 
-
 use Simple\Cycle\Application;
 use Simple\Cycle\Request;
 use Simple\Cycle\Router;
@@ -18,7 +17,8 @@ use Simple\Cycle\Router;
  * Class WebApplication
  * @package Simple\Application\Web
  */
-abstract class WebApplication extends Application{
+abstract class WebApplication extends Application
+{
 
     /**
      *
@@ -35,8 +35,6 @@ abstract class WebApplication extends Application{
     }
 
 
-
-
     /**
      * 创建Request对象
      * @param Router $router
@@ -44,8 +42,8 @@ abstract class WebApplication extends Application{
      */
     public function createRequest(Router $router)
     {
-        $params = array_merge($_GET,$_POST);
-        $this->request = new WebRequest(array($router->getModule(),$router->getAction()),$params);
+        $params = array_merge($_GET, $_POST);
+        $this->request = new WebRequest($params);
     }
 
     /**
@@ -60,7 +58,4 @@ abstract class WebApplication extends Application{
     }
 
 
-
-
-
-} 
+}

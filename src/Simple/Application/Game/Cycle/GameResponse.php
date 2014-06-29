@@ -24,10 +24,10 @@ class GameResponse extends Response
         $data['stat'] = $this->getStatus();
         $data['data'] = $this->getBody();
         $header = $this->getHeader();
-        $data['head'][ConfigManager::get('module_var')] = $header[0];
-        $data['head'][ConfigManager::get('action_var')] = $header[1];
-        if(isset($header[2])){
-            $data['head'][ConfigManager::get('group_var')] = $header[2];
+        $data['head'][ConfigManager::get('module_var')] = $header[1];
+        $data['head'][ConfigManager::get('action_var')] = $header[2];
+        if (isset($header[0])) {
+            $data['head'][ConfigManager::get('group_var')] = $header[0];
         }
         return $data;
     }

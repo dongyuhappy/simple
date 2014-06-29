@@ -29,6 +29,26 @@ abstract class Application
      */
     protected $config = array();
 
+
+    /**
+     * 获取router对象
+     * @return Router
+     */
+    public function getRouter()
+    {
+        return $this->router;
+    }
+
+
+    /**
+     * 获取request
+     * @return Request
+     */
+    public function getRequest()
+    {
+        return $this->request;
+    }
+
     /**
      * 初始化项目
      * @param array $config 项目的配置信息

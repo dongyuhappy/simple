@@ -37,6 +37,25 @@ class Bootstrap
 
 
     /**
+     * 获取请求头信息
+     * @return array
+     * @throws Exception\BootstrapException
+     */
+    public static function getHeader()
+    {
+        if (!self::$_app) {
+            throw new BootstrapException('项目还未初始化。');
+        }
+        $router = self::$_app->getRouter();
+        $g = $router->getGroup();
+        $m = $router->getModule();
+        $a = $router->getAction();
+        $header = array($g, $m, $a);
+        return $header;
+    }
+
+
+    /**
      * 初始化操作
      */
     public static function init()
@@ -74,7 +93,7 @@ class Bootstrap
             throw new BootstrapException('SIMPLE_LIB_PATH is not defined');
 
 
-        if(version_compare(PHP_VERSION,'5.3.0','<'))
+        if (version_compare(PHP_VERSION, '5.3.0', '<'))
             throw new BootstrapException('PHP版本太低， PHP > 5.3.0 !');
     }
 
@@ -167,8 +186,8 @@ class Bootstrap
      */
     public static function handlerNonFatal($errno, $errstr, $errfile, $errline)
     {
-        $info = "##".$errstr."##出现在文件##".$errfile."##的第##".$errline."##行,错误码为:##".$errno."##";
-        LogUtil::write($info,'warning',Logger::WARNING);
+        $info = "##" . $errstr . "##出现在文件##" . $errfile . "##的第##" . $errline . "##行,错误码为:##" . $errno . "##";
+        LogUtil::write($info, 'warning', Logger::WARNING);
 // 		return true;//标准错误处理程序停止调用
 
     }
@@ -180,13 +199,13 @@ class Bootstrap
     public static function handlerException(\Exception $e)
     {
         $msg['message'] = $e->getMessage();
-        $msg['file'] = $e->getFile().'#'.$e->getLine();
+        $msg['file'] = $e->getFile() . '#' . $e->getLine();
         $msg['exception'] = get_class($e);
         $msg['line'] = __LINE__;
-        try{
-            LogUtil::write($msg,'uncatch',Logger::ERROR);
-        }catch (\Exception $ecp){
-           echo '<p style="color:red;"><b>'.$ecp->getMessage().'</b></p>';//$ecp->getMessage();
+        try {
+            LogUtil::write($msg, 'uncatch', Logger::ERROR);
+        } catch (\Exception $ecp) {
+            echo '<p style="color:red;"><b>' . $ecp->getMessage() . '</b></p>'; //$ecp->getMessage();
             exit;
         }
     }

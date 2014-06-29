@@ -8,11 +8,10 @@
 namespace Simple\Application\Web;
 
 
-
 use Simple\Cycle\Request;
-use Simple\Debug\Debug;
 
-class WebRequest extends Request{
+class WebRequest extends Request
+{
     /**
      * 来源
      * @var string
@@ -32,9 +31,10 @@ class WebRequest extends Request{
      */
     private $requestMethod = null;
 
-    public function __construct($header,$body){
-        parent::__construct($header,$body);
-        if(isset($_SERVER['HTTP_REFERER'])){
+    public function __construct($body)
+    {
+        parent::__construct($body);
+        if (isset($_SERVER['HTTP_REFERER'])) {
             $this->referer = $_SERVER['HTTP_REFERER'];
         }
 
@@ -47,11 +47,12 @@ class WebRequest extends Request{
         $header = $this->getHeader();
 
         //定义请求相关常量
-        define('_ROOT_',$root);
-        define('_APP_',$scriptName);
-        define('_MODULE_',$header[0]);
-        define('_ACTION_',$header[1]);
-        define('_TIME_',$_SERVER['REQUEST_TIME']);
+        define('_ROOT_', $root);
+        define('_APP_', $scriptName);
+        define('_GROUP_', $header[0]);
+        define('_MODULE_', $header[1]);
+        define('_ACTION_', $header[2]);
+        define('_TIME_', $_SERVER['REQUEST_TIME']);
 
 
     }
@@ -79,7 +80,6 @@ class WebRequest extends Request{
     {
         return $this->requestTime;
     }
-
 
 
     /**

@@ -10,7 +10,7 @@
  *
  */
 return array(
-    'tpl' => APP_PATH . 'tpl' . DIRECTORY_SEPARATOR, //模板目录
+    'tpl' => dirname(APP_PATH) . 'tpl' . DIRECTORY_SEPARATOR, //模板目录
     'tpl_suffix' => '.html',//模板文件的后缀
     'css' => 'public/css',//css文件夹
     'js' =>'public/js',//js

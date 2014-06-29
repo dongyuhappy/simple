@@ -33,7 +33,7 @@ return array(
     'app_vendor' => array(),
 
     'timezone' => 'Asia/Hong_Kong', //默认的时区
-    'log' => APP_PATH . 'log' , //日志文件的跟目录
+    'log' => dirname(APP_PATH) . DIRECTORY_SEPARATOR . 'log', //日志文件的跟目录
 
     'debug'=>true,//默认为调试模式
 

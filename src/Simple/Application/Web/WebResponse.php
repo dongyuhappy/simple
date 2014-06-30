@@ -82,6 +82,7 @@ class WebResponse extends Response
         //添加常用的全局变量
         $twig->addGlobal('__ROOT__', _ROOT_);
         $twig->addGlobal('__APP__', _APP_);
+        $twig->addGlobal('__GROUP__',_GROUP_);
         $twig->addGlobal('__MODULE__', _MODULE_);
         $twig->addGlobal('__ACTION__', _ACTION_);
         $twig->addGlobal('__TIME__', _TIME_);

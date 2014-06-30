@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>账号</title>
+    <link rel="stylesheet" href="{{__CSS__}}/bootstrap.css">
+    <link rel="stylesheet" href="{{__CSS__}}/simple_build.css">
+
+</head>
+<body>
+<div class="table-responsive">
+<table class="table table-hover ">
+    <thead>
+        <tr>
+            <th>编号</th>
+            <th>名称</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>名称</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>名称</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div class="container">
+    <form role="form">
+        <div class="form-group">
+            <label for="uin">用户名</label>
+            <input name="uin" id="uin" type="tel" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="nick">昵称</label>
+            <input type="text" id="nick" name="nick" class="form-control" placeholder="昵称">
+        </div>
+        <button type="submit" class="btn btn-default" >提交</button>
+    </form>
+
+
+
+
+</div>
+<br />
+<div class="container">
+    <form role="form" class="form-horizontal">
+        <div class="form-group">
+            <label class="sr-only" for="email">e_mail地址</label>
+            <input type="email" class="form-control" id="email" name="email" >
+        </div>
+        <div class="form-group">
+            <label for="address">地址</label>
+            <input class="form-control" type="text" id="address" name="address">
+        </div>
+        <button class="btn btn-default">提交</button>
+    </form>
+</div>
+<p><span class="glyphicon glyphicon-star"></span> 赞</p>
+
+
+<div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+        下拉菜单
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><a role="menuitem" href="#">菜单一</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">菜单二</a></li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">另外一组菜单</a></li>
+    </ul>
+</div>
+<ul class="nav nav-pills" role="tablist">
+    <li class="active"><a href="#">主页</a></li>
+    <li><a href="#">个人信息</a></li>
+    <li><a href="#">关于我们</a></li>
+</ul>
+
+</body>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="{{__JS__}}/jquery1.1.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="{{__JS__}}/bootstrap.js"></script>
+</html>

@@ -13,10 +13,10 @@ define('DS',DIRECTORY_SEPARATOR);
 define('ROOT',dirname(dirname(__FILE__)));
 
 //框架的路径
-define('SIMPLE_LIB_PATH',ROOT.DS.'simple_master'.DS.'src'.DS);
+define('SIMPLE_LIB_PATH',dirname(__FILE__).DS.'src'.DS);
 
 //项目的路径
-define('APP_PATH',ROOT.DS.'simple_master'.DS.'build'.DS.'src'.DS);
+define('APP_PATH',dirname(__FILE__).DS.'build'.DS.'src'.DS);
 
 //定义项目的顶级命名空间
 define('APP_TOP_NAMESPACE','Build');

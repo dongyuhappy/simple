@@ -9,6 +9,7 @@ namespace Simple\Application\Web;
 
 use Simple\Config\ConfigManager;
 use Simple\Cycle\Response;
+use Simple\Debug\Debug;
 
 class WebResponse extends Response
 {
@@ -30,20 +31,18 @@ class WebResponse extends Response
     private function display()
     {
         $header = $this->getHeader();
-
         //创建loader对象
         $tplPath = ConfigManager::get('tpl') . DIRECTORY_SEPARATOR;
-
         //group不存在就直接去掉
         if (empty($header[0])) {
             array_shift($header);
         }
 
         $tplFileName = array_pop($header); //模板文件的名称
-        $loader = new \Twig_Loader_Filesystem($tplPath . implode(DIRECTORY_SEPARATOR, $header));
+        $loader = new \Twig_Loader_Filesystem($tplPath );
         $env = $this->makeEnvironment($loader);
         $suffix = ConfigManager::get('tpl_suffix');
-        $env->display($tplFileName . $suffix, $this->getBody());
+        $env->display(implode(DIRECTORY_SEPARATOR, $header).DIRECTORY_SEPARATOR.$tplFileName . $suffix, $this->getBody());
     }
 
 

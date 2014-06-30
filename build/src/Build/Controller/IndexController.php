@@ -9,11 +9,21 @@ namespace Build\Controller;
 
 
 
+use Build\Cycle\BuildRequest;
 use Build\Cycle\BuildResponse;
 
 class IndexController {
-    public function index(){
+
+
+    public function index(BuildRequest $request){
+        return new BuildResponse();
+    }
+
+
+    public function login(BuildRequest $request){
 
         return new BuildResponse();
     }
+
+
 } 
